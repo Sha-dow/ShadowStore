@@ -1,0 +1,553 @@
+/*/////////////////////////////////////////////////
+///---------------------------------------------///
+///		CSS-Stylesheet 	for Assignment 2		///
+///		Hannu Ranta 2013						///
+///		All rights reserved						///
+///---------------------------------------------///
+/////////////////////////////////////////////////*/
+
+/* Common Body-part: */
+
+body
+{
+	background-color: #535353;
+
+	width: 80%;
+
+	margin: auto;
+	padding: 0;
+}
+
+/* Fix for list navbar */
+
+ul
+{
+	margin: 0;
+}
+
+/*################################################
+	Navigation part:
+################################################*/
+
+/* Basic style */
+
+#navigation 
+{
+	padding: 0;
+	margin: 0;
+
+	height: 40px;
+	width: 100%;
+
+	min-width: 650px;
+
+	font: 12px Arial, Helvetica;
+	font-weight: bold;
+	text-align: center;
+
+	list-style-type: none;
+
+	border-bottom: 1px solid #ff8b25;
+	border-left: 2px solid #ff8b25;
+	border-right: 2px solid #ff8b25;
+
+	background-color: #1f1f1f;
+}
+
+/* List objects in nav-bar */
+
+#navigation li
+{
+	float: left;
+
+	padding: 0;
+	margin: 0;
+
+	width: auto;
+	border-right: 1px solid #ff8b25;
+	display: block;
+}
+
+/* Links in nav-list */
+
+#navigation li a, #navigation li a:link
+{
+	background-color: #1f1f1f;
+	color: white;
+	
+	text-decoration: none;
+
+	padding-left: 10px;
+	padding-right: 15px;
+	padding-top: 13px;
+	padding-bottom: 10px;
+
+	
+	display: block;
+}
+
+/* Hover style for links in nav-bar */
+
+#navigation li a:hover
+{
+	background-color: #ff8b25;
+	color: white;
+
+	border-bottom: 3px solid #ff8b25;
+	cursor: pointer;
+}
+
+/* Highlight current page */
+
+#navigation li a#current, #navigation li a#current:link
+{
+	color: white;
+
+	cursor: default;
+
+	font-weight: bold;
+
+	border-bottom: 2px solid white;
+
+	background-color: #ff8b25;
+}
+
+/* Special hover-syle for current page */
+
+#navigation a#current:hover
+{
+	border-bottom: 2px solid white;
+
+	background-color: #ff8b25;
+}
+
+#logout
+{
+	padding: 0;
+	margin: 0;
+
+	height: 40px;
+	width: 100%;
+
+	min-width: 40px;
+
+	font: 12px Arial, Helvetica;
+	font-weight: bold;
+	text-align: center;
+
+	list-style-type: none;
+
+	background-color: #1f1f1f;
+}
+
+/* List objects in nav-bar */
+
+#logout li
+{
+	float: right;
+
+	padding: 0;
+	margin: 0;
+
+	width: auto;
+	border-left: 1px solid #ff8b25;
+	display: block;
+}
+
+/* Links in nav-list */
+
+#logout li a, #navigation li a:link
+{
+	background-color: #1f1f1f;
+	color: white;
+	
+	text-decoration: none;
+
+	padding-left: 10px;
+	padding-right: 15px;
+	padding-top: 13px;
+	padding-bottom: 10px;
+
+	
+	display: block;
+}
+
+/* Hover style for links in nav-bar */
+
+#logout li a:hover
+{
+	background-color: #ff8b25;
+	color: white;
+
+	border-bottom: 3px solid #ff8b25;
+	cursor: pointer;
+}
+
+/*################################################
+	Forms:
+################################################*/
+
+/* Loginform main part*/
+#loginform
+{
+	margin-top: 30px;
+	padding: 15px;
+
+	width: auto;
+	height: auto;
+
+	position: relative;
+
+	border-left: 1px solid #ff8b25;
+	border-top: 1px solid #ff8b25;
+	border-bottom: 1px solid #ff8b25;
+
+	font: 12px Arial, Helvetica;
+	font-weight: bold;
+	color: white;
+
+} 
+
+/* Loginform input parts */
+#loginform input 
+{
+	padding: 5px;
+	
+	margin-top: 3px;
+	margin-left: auto;
+	margin-right: auto;
+	
+	display: block;
+
+	width: 90%;
+
+	border: 1px solid #ff8b25;
+	background-color: #282828;
+
+	font: 12px Arial, Helvetica;
+	font-weight: normal;
+	color: white;
+
+}
+
+/*------------------------------------------------*/
+
+/* registerform main */
+#registerform
+{
+	margin-top: 10px;
+	margin-left: 30px; 
+	padding: 15px;
+
+	width: auto;
+	height: auto;
+
+	position: relative;
+
+	font: 12px Arial, Helvetica;
+	font-weight: bold;
+	color: white;
+} 
+
+/* fieldset */
+#registerform fieldset
+{
+	float: left;
+	margin-right: 5px;
+	margin-top: 10px;
+
+	width: 40%;
+	border: 0;
+}
+
+/* input fields */
+#registerform input, #registerform textarea
+{
+	padding: 5px;
+	margin-top: 3px;
+	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
+
+	width: 80%;
+
+	border: 1px solid #ff8b25;
+	background-color: #282828;
+
+	font: 12px Arial, Helvetica;
+	font-weight: normal;
+	color: white;
+
+	resize: none;
+	overflow: auto;
+}
+
+/*------------------------------------------------*/
+
+/* form inputfield focus */
+#loginform input:focus, #registerform input:focus, #registerform textarea:focus
+{
+	background-color: #505050;
+}
+
+/* form buttons */
+#loginform input[type="submit"], #registerform input[type="submit"]
+{
+	height: 40px;
+	font: 12px Arial, Helvetica;
+	font-weight: bold;
+	color: white;
+}
+
+#loginform input[type="submit"]:hover, #registerform input[type="submit"]:hover
+{
+	background-color: #ff8b25;
+}
+
+#loginform input[type="button"], #registerform input[type="button"]
+{
+	height: 40px;
+	font: 12px Arial, Helvetica;
+	font-weight: bold;
+	color: white;
+}
+
+#loginform input[type="button"]:hover, #registerform input[type="button"]:hover
+{
+	background-color: #ff8b25;
+}
+
+
+/*################################################
+	Structural parts:
+################################################*/
+
+/* Header */
+
+#header
+{
+	margin-top: 30px;
+	margin-bottom: 0;
+
+	padding: 0;
+
+	background-color: #1f1f1f;
+
+	height: 130px;
+	width: 100%;
+	min-width: 650px;
+
+	display: block;
+
+	border-top: 2px solid #ff8b25;
+	border-bottom: 1px solid #ff8b25;
+	border-left: 2px solid #ff8b25;
+	border-right: 2px solid #ff8b25;
+}
+
+/* Main container */
+
+#main-container
+{
+	width: 100%;
+
+	min-width: 650px;
+	min-height: 550px;
+	
+	padding: 0;
+	margin: 0;
+
+	border-left: 2px solid #ff8b25;
+	border-right: 2px solid #ff8b25;
+
+	background-color: #1f1f1f;
+}
+
+/* Left Container */
+
+#container
+{
+	width: 80%;
+	min-height: 300px;
+	height: 100%;
+
+	padding: 0;
+	margin: 0;
+
+	background-color: #1f1f1f;
+
+	float:left;
+
+	display: block;
+}
+
+/* Chapter inside left container */
+
+#container p
+{
+	margin: 0;
+
+	padding-top: 20px;
+	padding-left: 50px;
+
+	font: 12px Arial, Helvetica;
+	font-weight: normal;
+	color: white;
+}
+
+/* List inside left container */
+
+#container ul
+{
+	margin: 0;
+
+	padding-top: 20px;
+	padding-left: 60px;
+
+	font: 12px Arial, Helvetica;
+	font-weight: normal;
+	color: white;
+}
+
+/* Right container */
+
+#side-container
+{
+	width: 20%;
+	min-height: 300px;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+
+	background-color: #1f1f1f;
+	
+	float: right;
+	
+	display: block;
+}
+
+#side-container p
+{
+	margin: 0;
+
+	padding-top: 20px;
+	padding-left: 10px;
+
+	font: 10px Arial, Helvetica;
+	font-weight: bold;
+	color: white;
+}
+
+/* Footer */
+
+#footer
+{
+	font: 10px Times, Arial, Helvetica;
+	font-weight: bold;
+	color: #9a9a9a;
+
+	background-color: #1f1f1f;
+
+	padding: 0;
+	margin: 0;
+
+	border-left: 2px solid #ff8b25;
+	border-right: 2px solid #ff8b25;
+	border-bottom: 2px solid #ff8b25;
+	border-top: 1px solid #ff8b25;
+	
+	height: 20px;
+	width: 100%;
+	min-width: 650px;
+}
+
+/* Images inside footer */
+
+#footer img
+{
+	float: right;
+
+	padding-right: 10px;
+
+	margin: 0;
+}
+
+/* Chapters inside footer */
+
+#footer p
+{
+	margin: 0;
+
+	padding-left: 15px;
+	padding-top: 3px;
+}
+
+/*################################################
+	Text, link and header definitions:
+################################################*/
+
+/*------------------------------------------------
+		HEADERS
+------------------------------------------------*/
+
+/* First level header */
+
+h1
+{
+	margin: 0;
+
+	padding-top: 20px;
+	padding-left: 50px;
+
+	font: 14px Arial, Helvetica;
+	font-weight: bold;
+	color: white;
+}
+
+/* Second level header */
+
+h2
+{
+	margin: 0;
+
+	padding-top: 20px;
+	padding-left: 50px;
+
+	font: 12px Arial, Helvetica;
+	font-weight: bold;
+	font-style: italic;
+	text-decoration: underline;
+	color: white;
+}
+
+/*------------------------------------------------
+		LINKS
+------------------------------------------------*/
+
+/* Unvisited link color */
+
+a:link 
+{
+	color: #ff4008;
+}
+
+/* Visited link color */
+
+a:visited
+{
+	color: #6e1700;
+} 
+
+/* Hover color */
+
+a:hover
+{
+	color: #ff8010;
+} 
+
+/* Active link */
+
+a:active
+{
+	color: #ffcd19;
+}  

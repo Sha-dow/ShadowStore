@@ -1,0 +1,34 @@
+SECURITY
+-------------------------------------------------------------------------
+
+- DB connection info saved to config.php which should be placed 
+  outside of document root 
+	--> In case of PHP env. failure cant retrieve that file
+
+- All passwords hashed with sha256 and salt
+
+- Function mysqli_escape_string() used to prevent SQL-injections
+
+- Function htmlentities() used to prevent XSS-attacks
+
+- Errors handled properly but no mysqli_error() printed since it can provide
+  valuable information to attacker
+
+USABILITY
+-------------------------------------------------------------------------
+
+- Large buttons and a lot of space between input fields
+	--> Touchscreen friendly design
+
+- Registration form will restore entered data if username is reserved 
+
+OTHER NOTES
+-------------------------------------------------------------------------
+
+- MySQL Improved used instead of normal MySQL lib
+
+- information.php and history.php will redirect to index.php if not logged in
+
+- register.php and success.php will redirect to index.php if logged in
+
+- Navigation is created according to users role

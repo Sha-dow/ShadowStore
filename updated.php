@@ -1,7 +1,8 @@
 <?php
 	session_start();
 	include 'functions.php';
-	print_head("Order History");
+	print_head("Updated");
+
 	$role = '';
 
 	if (isset($_SESSION['username'])) {
@@ -18,15 +19,15 @@
 		header('Location: index.php');
 	}
 
-	print_navigation($role, 'history');
+	print_navigation($role, '');
 ?>
-		
+	
 <!-- Main container includes two minor containers -->
 <div id="main-container">
 	<div id="container">
-		<h1>Order history</h1>
+		<h1>User information updated successfully.</h1>
 		<p>
-			Contents here...
+			Please continue shopping.
 		</p>
 	</div>
 	

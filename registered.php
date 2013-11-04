@@ -21,7 +21,6 @@
 	</div>
 	
 <?php 
-
 	login_form(false);
 	print_footer();
 ?>

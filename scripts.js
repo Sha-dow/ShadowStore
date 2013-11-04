@@ -20,19 +20,39 @@ function reset_fields () {
 	register.chkpassword.value="";
 }
 
-//Validates data in registerform
-function validate_input() {
+//Validates data in registerform 
+//and informationform
+function validate_input(form) {
 
 	//Variables
 	var err_msg = "";
-	var firstname = register.firstname.value;
-	var lastname = register.lastname.value;
-	var email = register.email.value;
-	var phone = register.phone.value
-	var address = register.address.value;
-	var username = register.username.value;
-	var password = register.password.value;
-	var chkpassword = register.chkpassword.value;
+
+	if (form == 'register')
+	{
+		var firstname = register.firstname.value;
+		var lastname = register.lastname.value;
+		var email = register.email.value;
+		var phone = register.phone.value
+		var address = register.address.value;
+		var username = register.username.value;
+		var password = register.password.value;
+		var chkpassword = register.chkpassword.value;	
+	}
+	else if (form == 'information')
+	{
+		var firstname = information.firstname.value;
+		var lastname = information.lastname.value;
+		var email = information.email.value;
+		var phone = information.phone.value
+		var address = information.address.value;
+		var password = information.password.value;
+		var chkpassword = information.chkpassword.value;
+	}
+	else 
+	{
+		//This should never be reached...
+		alert("Something strange happened...");
+	}
 
 	//Regular expressions
 	var REemail = /^[\w]+(\.[\w]+)*@([\w\-]+\.)+[a-zA-Z]{2,7}$/;
@@ -95,16 +115,20 @@ function validate_input() {
 		err_msg += "\n";
 	};
 
-	if (username == "") 
+	if (form == 'register')
 	{
-		err_msg += "Please enter username";
-		err_msg += "\n";
+		if (username == "") 
+		{
+			err_msg += "Please enter username";
+			err_msg += "\n";
+		}
+		else if (username.length > 50)
+		{
+			err_msg += "Your username is too long";
+			err_msg += "\n";
+		}	
 	}
-	else if (username.length > 50)
-	{
-		err_msg += "Your username is too long";
-		err_msg += "\n";
-	}
+	
 
 	if (!REpassword.test(password))
 	{

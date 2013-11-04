@@ -188,7 +188,7 @@ ul
 ################################################*/
 
 /* Loginform main part*/
-#loginform
+#loginform, #cart
 {
 	margin-top: 30px;
 	padding: 15px;
@@ -209,7 +209,7 @@ ul
 } 
 
 /* Loginform input parts */
-#loginform input 
+#loginform input, #cart input
 {
 	padding: 5px;
 	
@@ -232,8 +232,8 @@ ul
 
 /*------------------------------------------------*/
 
-/* registerform main */
-#registerform
+/* register/informationform main */
+#generalform
 {
 	margin-top: 10px;
 	margin-left: 30px; 
@@ -250,7 +250,7 @@ ul
 } 
 
 /* fieldset */
-#registerform fieldset
+#generalform fieldset
 {
 	float: left;
 	margin-right: 5px;
@@ -261,7 +261,7 @@ ul
 }
 
 /* input fields */
-#registerform input, #registerform textarea
+#generalform input, #generalform textarea
 {
 	padding: 5px;
 	margin-top: 3px;
@@ -285,13 +285,13 @@ ul
 /*------------------------------------------------*/
 
 /* form inputfield focus */
-#loginform input:focus, #registerform input:focus, #registerform textarea:focus
+#loginform input:focus, #generalform input:focus, #genearlform textarea:focus
 {
 	background-color: #505050;
 }
 
 /* form buttons */
-#loginform input[type="submit"], #registerform input[type="submit"]
+#loginform input[type="submit"], #generalform input[type="submit"]
 {
 	height: 40px;
 	font: 12px Arial, Helvetica;
@@ -299,12 +299,12 @@ ul
 	color: white;
 }
 
-#loginform input[type="submit"]:hover, #registerform input[type="submit"]:hover
+#loginform input[type="submit"]:hover, #generalform input[type="submit"]:hover
 {
 	background-color: #ff8b25;
 }
 
-#loginform input[type="button"], #registerform input[type="button"]
+#loginform input[type="button"], #generalform input[type="button"], #cart input[type="button"]
 {
 	height: 40px;
 	font: 12px Arial, Helvetica;
@@ -312,7 +312,7 @@ ul
 	color: white;
 }
 
-#loginform input[type="button"]:hover, #registerform input[type="button"]:hover
+#loginform input[type="button"]:hover, #generalform input[type="button"]:hover, #cart input[type="button"]:hover
 {
 	background-color: #ff8b25;
 }

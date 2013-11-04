@@ -14,6 +14,9 @@ SECURITY
 - Errors handled properly but no mysqli_error() printed since it can provide
   valuable information to attacker
 
+- Information can be updated only when old password is entered
+	--> Preventing session stoles
+
 USABILITY
 -------------------------------------------------------------------------
 

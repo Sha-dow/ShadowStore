@@ -23,7 +23,7 @@ function print_head($page) {
 	echo "</head>" . PHP_EOL;
 	echo "<body>" . PHP_EOL;
 	echo "<!-- Header part -->" . PHP_EOL;
-	echo "<div id='header'><p>Moi</p></div>" . PHP_EOL;
+	echo "<div id='header'><img style='border:0' src='img/header.png' alt='Shadowfishing'/></div>" . PHP_EOL;
 }
 
 //--------------------------------------------------------
@@ -94,6 +94,12 @@ function print_navigation($privileges, $active) {
 	else {
 		echo "<li><a href='index.php'>Index</a></li>" . PHP_EOL;
 		echo "<li><a href='catalog.php'>Catalog</a></li>" . PHP_EOL;
+
+		if ($privileges == 'U' or $privileges == 'A') {
+			echo "<li><a href='information.php'>User Information</a></li>" . PHP_EOL;
+			echo "<li><a href='history.php'>Order History</a></li>" . PHP_EOL;
+		}
+
 		echo "<li><a href='contact.php'>Contact</a></li>" . PHP_EOL;
 	}
 
@@ -118,7 +124,7 @@ function print_navigation($privileges, $active) {
 function print_footer() {
 	echo "<!-- Footer -->" . PHP_EOL;
 	echo "<div id='footer'>" . PHP_EOL;
-	echo "<p>Address etc...</p>" . PHP_EOL;
+	echo "<p>Shadowfishing Oy | Tel: +358 40 112 223 | sales@shadowfishing.fi</p>" . PHP_EOL;
 	echo "</div></body></html>";
 }
 
@@ -162,7 +168,7 @@ function login_form($register) {
     		$username = mysqli_escape_string($conn, $username);
     		
     		//Search username from DB
-    		$query = "select firstname, lastname, password, salt, role from users where username = '" . $username . "';";
+    		$query = "select firstname, lastname, email, phone, address, password, salt, role from users where username = '" . $username . "';";
     		$resultset = mysqli_query($conn, $query);
 
 			//If query fails print error and die
@@ -185,6 +191,9 @@ function login_form($register) {
 					$_SESSION['username'] = $username;
 					$_SESSION['firstname'] = $data['firstname'];
 					$_SESSION['lastname'] = $data['lastname'];
+					$_SESSION['email'] = $data['email'];
+					$_SESSION['phone'] = $data['phone'];
+					$_SESSION['address'] = $data['address'];
 					$_SESSION['role'] = $data['role'];
 
 					//Redirect to index
@@ -241,12 +250,19 @@ function connect_db()
 //Shows users shopping cart
 //Parameters: 
 //	$firstname:		users firstname
+//	$lastname:		users lastname
+//	$count:			number of items
+//	$value:			total value
 //Returns: -
 //--------------------------------------------------------
-function shopping_cart($firstname) {
+function shopping_cart($firstname, $lastname, $count, $value) {
 	echo "<div id='side-container'>" . PHP_EOL;
-	echo $firstname;
-	echo "</div></div>" . PHP_EOL;
+	echo "<div id='cart'>" . PHP_EOL;
+	echo "<h2>" . $firstname . " " . $lastname . "</h2><br/>" . PHP_EOL;
+	echo "Items in cart: " . $count . "<br/>" . PHP_EOL;
+	echo "Total value: " . $value . " &euro;<br/><br/>" . PHP_EOL;
+	echo "<input type='button' name='view_cart' id='view_cart' value='View cart' onClick=\"location.href = 'cart.php'\"/>" . PHP_EOL;
+	echo "</div></div></div>";
 } 	
 
 ?>

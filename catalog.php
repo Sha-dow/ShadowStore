@@ -9,6 +9,9 @@
 		$username = $_SESSION['username'];
 		$firstname = $_SESSION['firstname'];
 		$lastname = $_SESSION['lastname'];
+		$email = $_SESSION['email'];
+		$phone = $_SESSION['phone'];
+		$address = $_SESSION['address'];
 		$role = $_SESSION['role'];	
 	}
 
@@ -27,7 +30,7 @@
 <?php 
 
 	if (isset($_SESSION['username'])) {
-		shopping_cart($firstname);
+		shopping_cart($firstname, $lastname, 0, 0);
 	}
 	else {
 		login_form(true);

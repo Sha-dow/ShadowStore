@@ -20,7 +20,7 @@
 			(All fieds are required)
 
 			<!-- Registeration form -->
-			<form name='register' id='registerform' action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>
+			<form name='register' id='generalform' action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>
 				<fieldset>
 					<label>First name: <br/><input type="text" name="firstname" maxlength="50" <?php if (isset($_POST['firstname'])) echo 'value="'. htmlentities($_POST['firstname']) . '"';?> /></label><br/>
 					<label>Last name: <br/><input type="text" name="lastname" maxlength="50" <?php if (isset($_POST['lastname'])) echo 'value="'. htmlentities($_POST['lastname']) . '"';?> /></label></br>
@@ -31,12 +31,12 @@
 	
 				<fieldset>
 					<label>Username: <br/><input type="text" name="username" maxlength="50"/></label><br/>
-					<label>Password: <br/><input type="password" name="password" <?php if (isset($_POST['password'])) echo 'value="'. htmlentities($_POST['password']) . '"';?> /></label><br/>
-					<label>Re-enter password: <br/><input type="password" name="chkpassword" <?php if (isset($_POST['chkpassword'])) echo 'value="' . htmlentities($_POST['chkpassword']) . '"';?> /></label>
+					<label>Password: <br/><input type="password" name="password"/></label><br/>
+					<label>Re-enter password: <br/><input type="password" name="chkpassword"/></label>
 				</fieldset>
 
 				<fieldset>
-					<input type="submit" id="submit_reg" value="Register" name='submit' onClick="return validate_input()"/><br/>
+					<input type="submit" id="submit_reg" value="Register" name='submit' onClick="return validate_input('register')"/><br/>
 					<input type="button" id="reset" value="Reset" onClick="reset_fields()"/>
 				</fieldset>
 			</form> <!-- Registeration form ends -->
@@ -112,7 +112,7 @@
 
 				//Close DB connection and move to success.php
 				mysqli_close($conn);
-				header('Location: success.php');
+				header('Location: registered.php');
 				die();
 			}
 		} 

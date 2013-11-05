@@ -93,7 +93,7 @@ ul
 	background-color: #ff8b25;
 	color: white;
 
-	border-bottom: 3px solid #ff8b25;
+	border-bottom: 3px solid white;
 	cursor: pointer;
 }
 
@@ -107,7 +107,7 @@ ul
 
 	font-weight: bold;
 
-	border-bottom: 2px solid white;
+	border-bottom: 3px solid white;
 
 	background-color: #ff8b25;
 }
@@ -179,7 +179,7 @@ ul
 	background-color: #ff8b25;
 	color: white;
 
-	border-bottom: 3px solid #ff8b25;
+	border-bottom: 3px solid white;
 	cursor: pointer;
 }
 
@@ -361,6 +361,8 @@ ul
 	border-right: 2px solid #ff8b25;
 
 	background-color: #1f1f1f;
+
+	overflow: auto;
 }
 
 /* Left Container */
@@ -459,6 +461,9 @@ ul
 	height: 20px;
 	width: 100%;
 	min-width: 650px;
+
+	clear: both;
+	position: relative;
 }
 
 /* Images inside footer */

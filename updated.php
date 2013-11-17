@@ -6,18 +6,16 @@
 	$role = '';
 
 	if (isset($_SESSION['username'])) {
-
-		$username = $_SESSION['username'];
 		$firstname = $_SESSION['firstname'];
 		$lastname = $_SESSION['lastname'];
-		$email = $_SESSION['email'];
-		$phone = $_SESSION['phone'];
-		$address = $_SESSION['address'];
 		$role = $_SESSION['role'];	
 	}
 	else {
 		header('Location: index.php');
 	}
+
+	unset($_SESSION['sort']);
+	$_SESSION['filter'] = 'all';
 
 	print_navigation($role, '');
 ?>

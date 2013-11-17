@@ -42,6 +42,8 @@ create table products (
 create table cart (
 	cid int not null auto_increment,
 	uid int not null,
+	orderdate datetime,
+	deladdress varchar(500),
 	status varchar(100) not null,
 
 	primary key(cid),

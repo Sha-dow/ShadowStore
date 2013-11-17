@@ -168,7 +168,7 @@ function login_form($register) {
     		$username = mysqli_escape_string($conn, $username);
     		
     		//Search username from DB
-    		$query = "select firstname, lastname, email, phone, address, password, salt, role from users where username = '" . $username . "';";
+    		$query = "select uid, firstname, lastname, email, phone, address, password, salt, role from users where username = '" . $username . "';";
     		$resultset = mysqli_query($conn, $query);
 
 			//If query fails print error and die
@@ -176,9 +176,6 @@ function login_form($register) {
 				echo "FAILURE: Cant retrieve data from database";
 				die();
 			}
-
-			//Close DB connection
-			mysqli_close($conn);
 
 			//If username was found from DB compare password hashes and create session if match
 			if (mysqli_num_rows($resultset) > 0) {
@@ -195,6 +192,33 @@ function login_form($register) {
 					$_SESSION['phone'] = $data['phone'];
 					$_SESSION['address'] = $data['address'];
 					$_SESSION['role'] = $data['role'];
+					$_SESSION['uid'] = $data['uid'];
+
+					//create shopping cart to user
+					$query = "insert into cart (uid, status) values ('" . $data['uid'] . "', 'current');";
+
+					//If query fails print error and die
+					if (!mysqli_query($conn, $query)) {
+						echo "FAILURE: SQL-operation failed";
+						die();
+					}
+
+					//Find cart id and store it to session data for later use
+					$query = "select cid from cart where uid='" . $_SESSION['uid'] . "' and status='current';";
+					$resultset = mysqli_query($conn, $query);
+
+					//If query fails print error and die
+					if (!$resultset) {
+						echo "FAILURE: Cant retrieve data from database";
+						die();
+					}
+
+					$data = mysqli_fetch_array($resultset, MYSQLI_ASSOC);
+
+					$_SESSION['cid'] = $data['cid'];
+
+					//Close DB connection
+					mysqli_close($conn);
 
 					//Redirect to index
 					header('Location: index.php');
@@ -264,5 +288,138 @@ function shopping_cart($firstname, $lastname, $count, $value) {
 	echo "<input type='button' name='view_cart' id='view_cart' value='View cart' onClick=\"location.href = 'cart.php'\"/>" . PHP_EOL;
 	echo "</div></div></div>";
 } 	
+
+//--------------------------------------------------------
+//Shows users shopping cart
+//Parameters: -
+//Returns: -
+//--------------------------------------------------------
+function print_items() {
+
+	//Connect to DB
+    $conn = connect_db();
+
+    $filter = $_SESSION['filter'];
+
+    //Show all items
+    if ($filter == "all")
+    {
+    	//Sort items according to GET-parameter
+	    if (isset($_SESSION['sort'])) {
+
+	    	if ($_SESSION['sort'] == 'name' or $_SESSION['sort'] == 'description' or $_SESSION['sort'] == 'price' or $_SESSION['sort'] == 'category') {
+
+	    		//SQL-query for sorting
+	    		$query = "select * from products order by " . htmlentities($_SESSION['sort']) . ";";	
+	    	}
+	    	else {
+
+	    		//SQL-query form invalid option
+	    		$query = "select * from products;";	
+	    	}
+	    }
+
+	    else {
+
+	    	//If parameter is not passed
+	    	$query = "select * from products;";	
+	    }
+    }
+
+    //Show items by category
+    else if ($filter == "line" or $filter == "rod" or $filter == "reel")
+    {
+
+    	if (isset($_SESSION['sort'])) {
+
+	    	if ($_SESSION['sort'] == 'name' or $_SESSION['sort'] == 'description' or $_SESSION['sort'] == 'price' or $_SESSION['sort'] == 'category') {
+
+	    		//SQL-query for sorting
+	    		$query = "select * from products where category = '" . htmlentities($filter) . "' order by " . htmlentities($_SESSION['sort']) . ";";
+	    	}
+	    	else {
+
+	    		//SQL-query form invalid option	
+	    		$query = "select * from products where category = '" . htmlentities($filter) . "';";
+	    	}
+	    }
+
+	    else {
+
+	    	//If parameter is not passed
+	    	$query = "select * from products where category = '" . htmlentities($filter) . "';";	
+	    }	
+    }
+
+    //Show items by keyword
+    else
+    {
+    	if (isset($_SESSION['sort'])) {
+
+	    	if ($_SESSION['sort'] == 'name' or $_SESSION['sort'] == 'description' or $_SESSION['sort'] == 'price' or $_SESSION['sort'] == 'category') {
+
+	    		//SQL-query for sorting
+	    		$query = "select * from products where category like '%" . htmlentities($filter) . 
+	    		"%' or name like '%" . htmlentities($filter) . "%' or description like '%" . htmlentities($filter) . "%' order by " . htmlentities($_SESSION['sort']) . ";";
+	    	}
+	    	else {
+
+	    		//SQL-query form invalid option	
+	    		$query = "select * from products where category like '%" . htmlentities($filter) . 
+    			"%' or name like '%" . htmlentities($filter) . "%' or description like '%" . htmlentities($filter) . "%';";
+	    	}
+	    }
+
+	    else {
+
+	    	//If parameter is not passed
+	    	$query = "select * from products where category like '%" . htmlentities($filter) . 
+    		"%' or name like '%" . htmlentities($filter) . "%' or description like '%" . htmlentities($filter) . "%';";	
+	    }	
+
+    	$query = "select * from products where category like '%" . htmlentities($filter) . 
+    		"%' or name like '%" . htmlentities($filter) . "%' or description like '%" . htmlentities($filter) . "%';";
+    }
+
+    $resultset = mysqli_query($conn, $query);
+
+	//If query fails print error and die
+	if (!$resultset) {
+		echo "FAILURE: Cant retrieve data from database";
+		die();
+	}
+
+	$even = false;
+
+	//Get through fecthed data and print products table
+	while ($data = mysqli_fetch_array($resultset, MYSQLI_ASSOC)) {
+
+		if ($even) {
+			echo "<tr class='even'>";
+			$even = false;	
+		}
+		else {
+			echo "<tr>";
+			$even = true;	
+		}
+		
+		echo "<td><img src='img/" . $data['image'] . "' width='100'></td>" . PHP_EOL;
+		echo "<td>" . $data['name'] . "</td>" . PHP_EOL;
+		echo "<td>" . $data['description'] . "</td>" . PHP_EOL;
+		echo "<td>" . $data['price'] . "&euro;</td>" . PHP_EOL;
+		echo "<td>" . $data['category'] . "</td>" . PHP_EOL;
+
+		//Only logged-in user can move products to shopping cart
+		if (isset($_SESSION['username'])) {
+			echo "<td><input type='submit' value='Add to Cart' onclick='addItem(" . $data['pid'] . ");'/></td>";
+		}
+
+		echo "</tr>";
+	}
+	echo "</table></form>";
+
+	//Close DB connection
+	mysqli_close($conn);
+}
 
 ?>

@@ -151,3 +151,7 @@ function validate_input(form) {
 	//If anything is allright return true 
 	return true;
 }
+
+function addItem(id) {
+		document.getElementById("pid").value = id;
+	}

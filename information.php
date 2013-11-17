@@ -18,6 +18,9 @@
 		header('Location: index.php');
 	}
 
+	unset($_SESSION['sort']);
+	$_SESSION['filter'] = 'all';
+
 	print_navigation($role, 'information');
 ?>
 	

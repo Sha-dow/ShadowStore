@@ -1,7 +1,8 @@
 <?php
 	session_start();
 	include 'functions.php';
-	print_head("Order History");
+	print_head("Added to cart");
+
 	$role = '';
 
 	if (isset($_SESSION['username'])) {
@@ -13,18 +14,15 @@
 		header('Location: index.php');
 	}
 
-	unset($_SESSION['sort']);
-	$_SESSION['filter'] = 'all';
-
-	print_navigation($role, 'history');
+	print_navigation($role, '');
 ?>
-		
+	
 <!-- Main container includes two minor containers -->
 <div id="main-container">
 	<div id="container">
-		<h1>Order history</h1>
+		<h1>Following item is now added to your shopping cart:</h1>
 		<p>
-			Contents here...
+			<?php echo $_POST['pid']; ?>
 		</p>
 	</div>
 	

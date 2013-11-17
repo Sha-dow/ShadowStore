@@ -183,6 +183,87 @@ ul
 	cursor: pointer;
 }
 
+/* Basic style for filter-list and related form elements */
+#filter
+{
+	margin-left: -10px;
+}
+
+/* Style for ul-element in filter-menu */
+#filter ul
+{
+	padding-top: 50px;
+	padding-left: 50px;
+	list-style-type:none;
+	overflow:hidden;
+} 
+
+/* Style for li-elements in filter-menu */
+#filter li
+{
+	float:left;
+}
+
+/* Style for link-elements in filter-menu */
+#filter a
+{
+	width: 100%;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 15px;
+	padding-right: 15px;
+
+	display: block;
+	font-weight: bold;
+
+	color: white;
+	background-color:#ff8b25;
+
+	text-align: center;
+	text-decoration: none;
+}
+
+/* Style for active and hover link elements in filter-menu */
+#filter a:hover, #filter a:active
+{
+	text-decoration: underline;
+}
+
+/* Style for search-form inside filter-menu*/
+#search
+{
+	margin-left: 50px;
+}
+
+/* Search-form input elements*/
+#search input
+{
+	margin-left: 5px;
+	padding: 7px;
+
+	border: 1px solid #ff8b25;
+	background-color: #282828;
+
+	font: 12px Arial, Helvetica;
+	font-weight: normal;
+	color: white;
+}
+
+#search input:focus
+{
+	background-color: #505050;
+}
+
+#search input[type="submit"]
+{
+	font-weight: bold;
+}
+#search input[type="submit"]:hover
+{
+	background-color: #ff8b25;
+	font-weight: bold;
+}
+
 /*################################################
 	Forms:
 ################################################*/
@@ -284,6 +365,19 @@ ul
 
 /*------------------------------------------------*/
 
+/* Catalogform general styling */
+#catalogform input
+{
+	border: 1px solid #ff8b25;
+	background-color: #282828;
+
+	font: 12px Arial, Helvetica;
+	font-weight: normal;
+	color: white;
+}
+
+/*------------------------------------------------*/
+
 /* form inputfield focus */
 #loginform input:focus, #generalform input:focus, #genearlform textarea:focus
 {
@@ -291,7 +385,7 @@ ul
 }
 
 /* form buttons */
-#loginform input[type="submit"], #generalform input[type="submit"]
+#loginform input[type="submit"], #generalform input[type="submit"], #catalogform input[type="submit"]
 {
 	height: 40px;
 	font: 12px Arial, Helvetica;
@@ -299,7 +393,7 @@ ul
 	color: white;
 }
 
-#loginform input[type="submit"]:hover, #generalform input[type="submit"]:hover
+#loginform input[type="submit"]:hover, #generalform input[type="submit"]:hover, #catalogform input[type="submit"]:hover
 {
 	background-color: #ff8b25;
 }
@@ -486,6 +580,54 @@ ul
 	padding-left: 15px;
 	padding-top: 3px;
 }
+
+#catalog
+{
+	margin: 50px;
+
+	width: 90%;
+
+	font: 12px Arial, Helvetica;
+	font-weight: normal;
+	color: white;
+
+	border-collapse: collapse;
+
+	border: 1px solid #ff8b25;
+}
+
+#catalog td 
+{
+	text-align: left;
+	padding: 20px;
+
+	border: 1px solid #ff8b25;
+}
+
+#catalog .even
+{
+	background-color: #333333;
+}
+
+#catalog th
+{
+	border: 1px solid #ff8b25;
+	background-color: #ff8b25;
+}
+
+#catalog a
+{
+	padding: 10px;
+	display: block;
+	text-decoration: none;
+	color: white;
+}
+
+#catalog a:hover
+{
+	text-decoration: underline;
+}
+
 
 /*################################################
 	Text, link and header definitions:

@@ -113,8 +113,9 @@
 				//Close DB connection and move to success.php
 				mysqli_close($conn);
 				header('Location: registered.php');
-				die();
 			}
+			mysqli_free_result($resultset);
+			mysqli_close($conn);
 		} 
 	}
 	print_footer();

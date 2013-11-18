@@ -21,7 +21,7 @@ create table users (
 	role varchar(1) not null,
 
 	primary key(uid)
-);
+)engine=innodb;
 
 #Creates products-table
 #Primary key: pid
@@ -34,7 +34,7 @@ create table products (
 	category varchar(100) not null,
 
 	primary key(pid)
-);
+)engine=innodb;
 
 #Creates cart-table
 #Primary key: cid
@@ -50,7 +50,7 @@ create table cart (
 
 	foreign key(uid) references users(uid) 
 	on update cascade on delete cascade
-);
+)engine=innodb;
 
 #Creates cart_items-table
 #Primary key: iid
@@ -65,8 +65,5 @@ create table cart_items (
 	primary key(iid),
 
 	foreign key(cid) references cart(cid)
-	on update cascade on delete cascade,
-
-	foreign key(pid) references producs(pid)
 	on update cascade on delete cascade
-);
+)engine=innodb;

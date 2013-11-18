@@ -12,7 +12,7 @@ body
 {
 	background-color: #535353;
 
-	width: 80%;
+	width: 90%;
 
 	margin: auto;
 	padding: 0;
@@ -365,9 +365,15 @@ ul
 
 /*------------------------------------------------*/
 
-/* Catalogform general styling */
-#catalogform input
+/* Catalogform & cartform general styling */
+#cartform
 {
+	margin-left: 50px;
+}
+
+#catalogform input, #cartform input
+{
+	padding: 5px;
 	border: 1px solid #ff8b25;
 	background-color: #282828;
 
@@ -379,7 +385,7 @@ ul
 /*------------------------------------------------*/
 
 /* form inputfield focus */
-#loginform input:focus, #generalform input:focus, #genearlform textarea:focus
+#loginform input:focus, #generalform input:focus, #generalform textarea:focus
 {
 	background-color: #505050;
 }
@@ -393,7 +399,18 @@ ul
 	color: white;
 }
 
-#loginform input[type="submit"]:hover, #generalform input[type="submit"]:hover, #catalogform input[type="submit"]:hover
+/* cartform submit-button rules */
+#cartform input[type="submit"]
+{
+	margin-left: 10px;
+	padding: 10px;
+	height: 40px;
+	font: 12px Arial, Helvetica;
+	font-weight: bold;
+	color: white;
+}
+
+#loginform input[type="submit"]:hover, #generalform input[type="submit"]:hover, #catalogform input[type="submit"]:hover, #cartform input[type="submit"]:hover
 {
 	background-color: #ff8b25;
 }
@@ -581,6 +598,9 @@ ul
 	padding-top: 3px;
 }
 
+/*-------------------------*/
+/* Table styles */
+
 #catalog
 {
 	margin: 50px;
@@ -596,7 +616,25 @@ ul
 	border: 1px solid #ff8b25;
 }
 
-#catalog td 
+#carttable
+{
+	margin-top: 20px;
+	margin-left: 0px;
+	margin-bottom: 20px;
+	margin-right: 50px;
+
+	width: 90%;
+
+	font: 12px Arial, Helvetica;
+	font-weight: normal;
+	color: white;
+
+	border-collapse: collapse;
+
+	border: 1px solid #ff8b25;
+}
+
+#catalog td
 {
 	text-align: left;
 	padding: 20px;
@@ -604,15 +642,17 @@ ul
 	border: 1px solid #ff8b25;
 }
 
-#catalog .even
-{
-	background-color: #333333;
-}
-
 #catalog th
 {
 	border: 1px solid #ff8b25;
 	background-color: #ff8b25;
+}
+
+#carttable th
+{
+	padding: 10px;
+	border: 1px solid #ff8b25;
+	background-color: #ff8b25;	
 }
 
 #catalog a
@@ -628,6 +668,28 @@ ul
 	text-decoration: underline;
 }
 
+#catalog .even, #carttable .even
+{
+	background-color: #333333;
+}
+
+#carttable td
+{
+	padding: 10px;
+	text-align: left;
+	border: 1px solid #ff8b25;
+}
+
+#carttable .total
+{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+
+	background-color: #ff8b25;
+	text-decoration: underline;
+	font-weight: bold;
+}
 
 /*################################################
 	Text, link and header definitions:

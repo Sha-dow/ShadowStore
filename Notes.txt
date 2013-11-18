@@ -35,3 +35,5 @@ OTHER NOTES
 - register.php and success.php will redirect to index.php if logged in
 
 - Navigation is created according to users role
+
+- mysqli_free_result() is used to free memory

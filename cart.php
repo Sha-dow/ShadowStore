@@ -1,7 +1,8 @@
 <?php
 	session_start();
 	include 'functions.php';
-	print_head("Index");
+	print_head("Shopping Cart");
+
 	$role = '';
 
 	if (isset($_SESSION['username'])) {
@@ -9,30 +10,30 @@
 		$lastname = $_SESSION['lastname'];
 		$role = $_SESSION['role'];	
 	}
+	else {
+		header('Location: index.php');
+	}
 
 	unset($_SESSION['sort']);
 	$_SESSION['filter'] = 'all';
 
-	print_navigation($role, 'index');
+	print_navigation($role, '');
 ?>
 	
 <!-- Main container includes two minor containers -->
 <div id="main-container">
 	<div id="container">
-		<h1>Welcome</h1>
-		<p>
-			Contents here...
-		</p>
-	</div>
+		<h1>Shopping cart</h1>
+<?php 
 	
-<?php
+	if (!isset($_SESSION['cid'])) {
+		echo "<p>No items in shopping cart.</p>";
+	}
 
-	if (isset($_SESSION['username'])) {
-		shopping_cart($firstname, $lastname);
-	}
 	else {
-		login_form(true);
+		print_cart();
 	}
-	
+
+	echo "</div></div>"; 
 	print_footer();
 ?>

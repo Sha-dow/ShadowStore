@@ -56,7 +56,7 @@
 	</div>
 	
 <?php 
-	shopping_cart($firstname, $lastname, 0, 0);
+	shopping_cart($firstname, $lastname);
 
 	//Catch submit-action 
 	if (isset($_POST['submit'])) {
@@ -100,6 +100,7 @@
 		if (mysqli_num_rows($resultset) > 0) {
 
 			$data = mysqli_fetch_array($resultset, MYSQLI_ASSOC);
+			mysqli_free_result($resultset);
 			$hash = hash('sha256', $data['salt'] . hash('sha256', $oldpassword));
 
 			if ($hash == $data['password']) {
@@ -130,7 +131,6 @@
 				//Close DB connection and redirect to updated.php
 				mysqli_close($conn);
 				header('Location: updated.php');
-				die();
 			}
 
 			else {

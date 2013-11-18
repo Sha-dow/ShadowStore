@@ -154,4 +154,8 @@ function validate_input(form) {
 
 function addItem(id) {
 		document.getElementById("pid").value = id;
-	}
+}
+
+function deleteItem(id) {
+		document.getElementById("iid").value = id;
+}

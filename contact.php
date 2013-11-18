@@ -46,7 +46,7 @@
 <?php 
 	
 	if (isset($_SESSION['username'])) {
-		shopping_cart($firstname, $lastname, 0, 0);
+		shopping_cart($firstname, $lastname);
 	}
 	else {
 		login_form(true);

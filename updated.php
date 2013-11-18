@@ -30,6 +30,6 @@
 	</div>
 	
 <?php 
-	shopping_cart($firstname, $lastname, 0, 0);
+	shopping_cart($firstname, $lastname);
 	print_footer();
 ?>

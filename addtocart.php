@@ -9,22 +9,6 @@
 	//Connect to DB
     $conn = connect_db();
 
-    //Find if user has saved shopping cart
-	$query = "select cid from cart where uid='" . $_SESSION['uid'] . "' and status='saved';";
-	$resultset = mysqli_query($conn, $query);
-
-	//If query fails print error and die
-	if (!$resultset) {
-		echo "FAILURE: Cant retrieve data from database";
-		die();
-	}
-
-	//If results are returned save cid to session data
-	if (mysqli_num_rows($resultset) > 0) {
-		$data = mysqli_fetch_array($resultset, MYSQLI_ASSOC);
-		$_SESSION['cid'] = $data['cid'];
-	}
-
 	//Check if cid is set to session data. If not, create new temporary shopping cart to user
     if (!isset($_SESSION['cid'])) {
     	//create shopping cart to user

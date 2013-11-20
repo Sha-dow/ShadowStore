@@ -30,10 +30,12 @@ OTHER NOTES
 
 - MySQL Improved used instead of normal MySQL lib
 
-- information.php and history.php will redirect to index.php if not logged in
+- Restricted pages will redirect to index.php if not logged in
 
-- register.php and success.php will redirect to index.php if logged in
+- register.php and registered.php will redirect to index.php if logged in (logged in user can not register)
 
 - Navigation is created according to users role
 
 - mysqli_free_result() is used to free memory
+
+- modifycart.php handles all shopping cart operations

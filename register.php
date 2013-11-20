@@ -110,7 +110,7 @@
 					die();
 				}
 
-				//Close DB connection and move to success.php
+				//Close DB connection and move to registered.php
 				mysqli_close($conn);
 				header('Location: registered.php');
 			}

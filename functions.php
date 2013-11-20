@@ -176,9 +176,6 @@ function login_form($register) {
 				echo "FAILURE: Cant retrieve data from database";
 				die();
 			}
-			
-			//Close DB connection
-			mysqli_close($conn);
 
 			//If username was found from DB compare password hashes and create session if match
 			if (mysqli_num_rows($resultset) > 0) {
@@ -197,7 +194,34 @@ function login_form($register) {
 					$_SESSION['role'] = $data['role'];
 					$_SESSION['uid'] = $data['uid'];
 
+					//Find if user has saved shopping cart
+					$query = "select cid from cart where uid='" . $_SESSION['uid'] . "' and status='saved';";
+					$resultset = mysqli_query($conn, $query);
+
+					//If query fails print error and die
+					if (!$resultset) {
+						echo "FAILURE: Cant retrieve data from database";
+						die();
+					}
+
+					//If results are returned save cid to session data and change cart state to current
+					if (mysqli_num_rows($resultset) > 0) {
+						$data = mysqli_fetch_array($resultset, MYSQLI_ASSOC);
+						$_SESSION['cid'] = $data['cid'];
+
+						$query = "update cart set status='current' where cid='" . $_SESSION['cid'] . "';";
+
+						//If query fails print error and die
+						if (!mysqli_query($conn, $query)) {
+							echo "FAILURE: SQL-operation failed";
+							die();
+						}
+					}
+
 					mysqli_free_result($resultset);
+
+					//Close DB connection
+					mysqli_close($conn);
 
 					//Redirect to index
 					header('Location: index.php');
@@ -519,6 +543,7 @@ function print_cart() {
 		echo "</table>";
 		echo "<input type='submit' id='submit' name='submit' value='Update cart'/>" . PHP_EOL;
 		echo "<input type='submit' id='submit' name='submit' value='Clear cart'/>" . PHP_EOL;
+		echo "<input type='submit' id='submit' name='submit' value='Save cart'/>" . PHP_EOL;
 		echo "<input type='submit' id='submit' name='submit' value='Checkout'/>" . PHP_EOL;
 		echo "</form>";
 	}

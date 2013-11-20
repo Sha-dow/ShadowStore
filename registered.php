@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	include 'functions.php';
-	print_head("Success");
+	print_head("Registered");
 
 	//If logged in redirect to index
 	if(isset($_SESSION['username'])) {

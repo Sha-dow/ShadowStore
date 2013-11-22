@@ -56,7 +56,7 @@
 			$lastname = $_POST['lastname'];
 			$email = $_POST['email'];
 			$phone = $_POST['phone'];
-			$address = $_POST['address'];
+			$address = trim(preg_replace('/\s\s+/', ' ', $_POST['address']));
 			$username = $_POST['username'];
 			$password = $_POST['password'];
 

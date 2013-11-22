@@ -39,3 +39,8 @@ OTHER NOTES
 - mysqli_free_result() is used to free memory
 
 - modifycart.php handles all shopping cart operations
+
+- Negative or zero product amounts is not accepted and old amount is recovered if user is trying to enter one.
+
+- Modular information page to show 
+simple notifications

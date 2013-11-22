@@ -366,7 +366,7 @@ ul
 /*------------------------------------------------*/
 
 /* Catalogform & cartform general styling */
-#cartform
+#cartform, #payform
 {
 	margin-left: 50px;
 }
@@ -382,6 +382,23 @@ ul
 	color: white;
 }
 
+#payform input
+{
+	margin-bottom: 30px;
+
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+
+	border: 1px solid #ff8b25;
+	background-color: #282828;
+
+	font: 12px Arial, Helvetica;
+	font-weight: normal;
+	color: white;	
+}
+
 /*------------------------------------------------*/
 
 /* form inputfield focus */
@@ -391,7 +408,7 @@ ul
 }
 
 /* form buttons */
-#loginform input[type="submit"], #generalform input[type="submit"], #catalogform input[type="submit"]
+#loginform input[type="submit"], #generalform input[type="submit"], #catalogform input[type="submit"], #payform input[type="submit"]
 {
 	height: 40px;
 	font: 12px Arial, Helvetica;
@@ -410,7 +427,7 @@ ul
 	color: white;
 }
 
-#loginform input[type="submit"]:hover, #generalform input[type="submit"]:hover, #catalogform input[type="submit"]:hover, #cartform input[type="submit"]:hover
+#loginform input[type="submit"]:hover, #generalform input[type="submit"]:hover, #catalogform input[type="submit"]:hover, #cartform input[type="submit"]:hover, #payform input[type="submit"]:hover
 {
 	background-color: #ff8b25;
 }
@@ -634,6 +651,24 @@ ul
 	border: 1px solid #ff8b25;
 }
 
+#ordertable
+{
+	margin-top: 20px;
+	margin-left: 50px;
+	margin-bottom: 20px;
+	margin-right: 50px;
+
+	width: 90%;
+
+	font: 12px Arial, Helvetica;
+	font-weight: normal;
+	color: white;
+
+	border-collapse: collapse;
+
+	border: 1px solid #ff8b25;
+}
+
 #catalog td
 {
 	text-align: left;
@@ -648,7 +683,7 @@ ul
 	background-color: #ff8b25;
 }
 
-#carttable th
+#carttable th, #ordertable th
 {
 	padding: 10px;
 	border: 1px solid #ff8b25;
@@ -673,14 +708,14 @@ ul
 	background-color: #333333;
 }
 
-#carttable td
+#carttable td, #ordertable td
 {
 	padding: 10px;
 	text-align: left;
 	border: 1px solid #ff8b25;
 }
 
-#carttable .total
+#carttable .total, #ordertable .total
 {
 	padding-top: 5px;
 	padding-bottom: 5px;

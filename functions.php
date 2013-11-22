@@ -220,11 +220,21 @@ function login_form($register) {
 
 					mysqli_free_result($resultset);
 
+					//If user has carts with current status for some reason delete those (This is just in case since there should not be any...)
+					$query = "delete from cart where uid='" . $_SESSION['uid'] . "' and status='current';";
+
+					//If query fails print error and die
+					if (!mysqli_query($conn, $query)) {
+						echo "FAILURE: SQL-operation failed";
+						die();
+					}
+
 					//Close DB connection
 					mysqli_close($conn);
 
 					//Redirect to index
 					header('Location: index.php');
+					die();
 				}
 
 				else {
@@ -474,7 +484,7 @@ function print_items() {
 
 //--------------------------------------------------------
 //Prints shopping cart items
-//Parameters: -
+//Parameters: 
 //Returns: -
 //--------------------------------------------------------
 function print_cart() {
@@ -554,6 +564,75 @@ function print_cart() {
 	mysqli_free_result($resultset);
 	mysqli_close($conn);
 
+}
+
+function print_ordercontent($cid) {
+
+	$total = 0;
+	$shipping = 10;
+
+	//Connect to DB and select items from cart according to cid
+    $conn = connect_db();
+    $query = "select * from cart_items where cid='" . $cid . "';";
+    $resultset = mysqli_query($conn, $query);
+
+    //If query fails print error and die
+	if (!$resultset) {
+		echo "FAILURE: Cant retrieve data from database";
+		die();
+	}
+
+
+
+	//If cart is not empty print contents...
+	if (mysqli_num_rows($resultset) > 0) {
+		
+		echo "<table id='ordertable' class='ordertable'><tr>" . PHP_EOL;
+		echo "<th>Name</th><th>Description</th><th>Unit price</th><th>Amount</th>" . PHP_EOL;
+		
+		$even = false;
+
+		//Get through fecthed data and collect to array
+		while ($data = mysqli_fetch_array($resultset, MYSQLI_ASSOC)) {
+			$items[] = $data;
+			$total = $total + ($data['amount'] * $data['price']);
+		}
+
+		for ($i = 0; $i < count($items); $i++) {
+			$query = "select name, description from products where pid='" . $items[$i]['pid'] . "';";
+			$resultset = mysqli_query($conn, $query);
+
+			//If query fails print error and die
+			if (!$resultset) {
+				echo "FAILURE: Cant retrieve data from database";
+				die();
+			}
+
+			while ($productdata = mysqli_fetch_array($resultset, MYSQLI_ASSOC)) {
+				if ($even) {
+					echo "<tr class='even'>";
+					$even = false;	
+				}
+				else {
+					echo "<tr>";
+					$even = true;	
+				}
+				
+				echo "<td>" . $productdata['name'] . "</td>" . PHP_EOL;
+				echo "<td>" . $productdata['description'] . "</td>" . PHP_EOL;
+				echo "<td>" . $items[$i]['price'] . "&euro;</td>" . PHP_EOL;
+				echo "<td>" . $items[$i]['amount'] . "</td>" . PHP_EOL;
+				echo "</tr>";
+			}
+		}
+
+		$total = $total + $shipping;
+		echo "<tr><td colspan='2'><b>Shipping</b></td><td>10.00&euro;</td><td colspan='2'></td></tr>";
+		echo "<tr><td colspan='2' class='total'>Total</td><td class='total'>" . number_format($total, 2, '.', '') . "&euro;</td><td colspan='2' class='total'></td></tr>";
+		echo "</table>";
+	}
+	mysqli_free_result($resultset);
+	mysqli_close($conn);
 }
 
 ?>

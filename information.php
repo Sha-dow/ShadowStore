@@ -29,7 +29,8 @@
 	<div id="container">
 		<h1>User Information</h1>
 		<p>
-			View and update your personal information: 
+			View and update your personal information: </br>
+			(For security reasons it is required to change password every time you update your information) 
 			<!-- Information form -->
 			<form name='information' id='generalform' action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>
 				<fieldset>
@@ -66,7 +67,7 @@
 		$lastname = $_POST['lastname'];
 		$email = $_POST['email'];
 		$phone = $_POST['phone'];
-		$address = $_POST['address'];
+		$address = trim(preg_replace('/\s\s+/', ' ', $_POST['address']));
 		$password = $_POST['password'];
 		$oldpassword = $_POST['oldpassword'];
 
@@ -130,7 +131,7 @@
 
 				//Close DB connection and redirect to updated.php
 				mysqli_close($conn);
-				header('Location: updated.php');
+				header('Location: message.php?header=User information updated successfully.&message=Your information has been updated.</br>Please continue shopping.');
 			}
 
 			else {

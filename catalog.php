@@ -1,6 +1,10 @@
 <?php
 	session_start();
 	include 'functions.php';
+
+	//Start output buffer
+	ob_start();
+
 	print_head("Catalog");
 	$role = '';
 
@@ -82,4 +86,7 @@
 	}
 
 	print_footer();
+
+	//End output-buffer 
+	ob_flush();
 ?>

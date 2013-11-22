@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	include 'functions.php';
-	print_head("Updated");
+	print_head($_GET['header']);
 
 	$role = '';
 
@@ -18,18 +18,16 @@
 	$_SESSION['filter'] = 'all';
 
 	print_navigation($role, '');
-?>
 	
-<!-- Main container includes two minor containers -->
-<div id="main-container">
-	<div id="container">
-		<h1>User information updated successfully.</h1>
-		<p>
-			Please continue shopping.
-		</p>
-	</div>
+	echo "<!-- Main container includes two minor containers -->";
+	echo "<div id='main-container'>";
+	echo "<div id='container'>";
+	echo "<h1>" . $_GET['header'] . "</h1>";
+	echo "<p>";
+	echo $_GET['message'];
+	echo "</p>";
+	echo "</div>";
 	
-<?php 
 	shopping_cart($firstname, $lastname);
 	print_footer();
 ?>

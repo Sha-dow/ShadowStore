@@ -19,14 +19,14 @@
 
 	print_navigation($role, '');
 	
-	echo "<!-- Main container includes two minor containers -->";
-	echo "<div id='main-container'>";
-	echo "<div id='container'>";
-	echo "<h1>" . $_GET['header'] . "</h1>";
+	echo "<!-- Main container includes two minor containers -->" . PHP_EOL;
+	echo "<div id='main-container'>" . PHP_EOL;
+	echo "<div id='container'>" . PHP_EOL;
+	echo "<h1>" . $_GET['header'] . "</h1>" . PHP_EOL;
 	echo "<p>";
-	echo $_GET['message'];
+	echo $_GET['message'] . PHP_EOL;
 	echo "</p>";
-	echo "</div>";
+	echo "</div>" . PHP_EOL;
 	
 	shopping_cart($firstname, $lastname);
 	print_footer();

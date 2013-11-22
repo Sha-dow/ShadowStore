@@ -37,46 +37,44 @@
 			</ul>
 		</div>
 		
-		<?php
+<?php
 
-		echo "<form name='catalogform' id='catalogform' action='addtocart.php' method='post'>" . PHP_EOL;
-		echo "<input type='hidden' id='pid' name='pid'/>";
-		echo "<table id='catalog' class='catalog'>";
+	echo "<form name='catalogform' id='catalogform' action='addtocart.php' method='post'>" . PHP_EOL;
+	echo "<input type='hidden' id='pid' name='pid'/>" . PHP_EOL;
+	echo "<table id='catalog' class='catalog'>" . PHP_EOL;
 
-		echo "<tr><th>Image</th>
-			<th><a href='" . $_SERVER['PHP_SELF'] . "?sort=name'>Name</a></th>
-			<th><a href='" . $_SERVER['PHP_SELF'] . "?sort=description'>Description</a></th>
-			<th><a href='" . $_SERVER['PHP_SELF'] . "?sort=price'>Price</a></th>
-			<th><a href='" . $_SERVER['PHP_SELF'] . "?sort=category'>Category</a></th>";
+	echo "<tr><th>Image</th>
+		<th><a href='" . $_SERVER['PHP_SELF'] . "?sort=name'>Name</a></th>
+		<th><a href='" . $_SERVER['PHP_SELF'] . "?sort=description'>Description</a></th>
+		<th><a href='" . $_SERVER['PHP_SELF'] . "?sort=price'>Price</a></th>
+		<th><a href='" . $_SERVER['PHP_SELF'] . "?sort=category'>Category</a></th>" . PHP_EOL;
 
-			if (isset($_SESSION['username'])) {
-				echo "<th></th>";
-			}
+	if (isset($_SESSION['username'])) {
+		echo "<th></th>";
+	}
 
-			echo "</tr>" . PHP_EOL;
+	echo "</tr>" . PHP_EOL;
 
-			if (isset($_GET['sort'])) {
-				$_SESSION['sort'] = htmlentities($_GET['sort']);
-			}
+	if (isset($_GET['sort'])) {
+		$_SESSION['sort'] = htmlentities($_GET['sort']);
+	}
 
-			if (isset($_POST['search'])) {
-				$_SESSION['filter'] = htmlentities($_POST['search']);
-				print_items();
-			} 
+	if (isset($_POST['search'])) {
+		$_SESSION['filter'] = htmlentities($_POST['search']);
+		print_items();
+	} 
 
-			else if (isset($_GET['filter'])) {
-				$_SESSION['filter'] = htmlentities($_GET['filter']);
-				print_items();
-			}
+	else if (isset($_GET['filter'])) {
+		$_SESSION['filter'] = htmlentities($_GET['filter']);
+		print_items();
+	}
 
-			else {
-				print_items();
-			} 
-		?>
+	else {
+		print_items();
+	} 
 
-	</div>
-	
-<?php 
+	echo "</div>";
+ 
 
 	if (isset($_SESSION['username'])) {
 		shopping_cart($firstname, $lastname);

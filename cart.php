@@ -27,7 +27,7 @@
 <?php 
 	
 	if (!isset($_SESSION['cid'])) {
-		echo "<p>No items in shopping cart.</p>";
+		echo "<p>No items in shopping cart.</p>" . PHP_EOL;
 	}
 
 	else {

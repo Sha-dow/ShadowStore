@@ -453,7 +453,7 @@ function print_items() {
 	while ($data = mysqli_fetch_array($resultset, MYSQLI_ASSOC)) {
 
 		if ($even) {
-			echo "<tr class='even'>";
+			echo "<tr class='even'>" . PHP_EOL;
 			$even = false;	
 		}
 		else {
@@ -469,12 +469,12 @@ function print_items() {
 
 		//Only logged-in user can move products to shopping cart
 		if (isset($_SESSION['username'])) {
-			echo "<td><input type='submit' value='Add to Cart' onclick='addItem(" . $data['pid'] . ");'/></td>";
+			echo "<td><input type='submit' value='Add to Cart' onclick='addItem(" . $data['pid'] . ");'/></td>" . PHP_EOL;
 		}
 
 		echo "</tr>";
 	}
-	echo "</table></form>";
+	echo "</table></form>" . PHP_EOL;
 
 	mysqli_free_result($resultset);
 
@@ -548,9 +548,9 @@ function print_cart() {
 		}
 
 		$total = $total + $shipping;
-		echo "<tr><td colspan='2'><b>Shipping</b></td><td>10.00&euro;</td><td colspan='2'></td></tr>";
-		echo "<tr><td colspan='2' class='total'>Total</td><td class='total'>" . number_format($total, 2, '.', '') . "&euro;</td><td colspan='2' class='total'></td></tr>";
-		echo "</table>";
+		echo "<tr><td colspan='2'><b>Shipping</b></td><td>10.00&euro;</td><td colspan='2'></td></tr>" . PHP_EOL;
+		echo "<tr><td colspan='2' class='total'>Total</td><td class='total'>" . number_format($total, 2, '.', '') . "&euro;</td><td colspan='2' class='total'></td></tr>" . PHP_EOL;
+		echo "</table>" . PHP_EOL;
 		echo "<input type='submit' id='submit' name='submit' value='Update cart'/>" . PHP_EOL;
 		echo "<input type='submit' id='submit' name='submit' value='Clear cart'/>" . PHP_EOL;
 		echo "<input type='submit' id='submit' name='submit' value='Save cart'/>" . PHP_EOL;
@@ -559,7 +559,7 @@ function print_cart() {
 	}
 	//...if empty, print information msg
 	else {
-		echo "<p>No items in shopping cart.</p>";		
+		echo "<p>No items in shopping cart.</p>" . PHP_EOL;		
 	}
 	mysqli_free_result($resultset);
 	mysqli_close($conn);
@@ -610,7 +610,7 @@ function print_ordercontent($cid) {
 
 			while ($productdata = mysqli_fetch_array($resultset, MYSQLI_ASSOC)) {
 				if ($even) {
-					echo "<tr class='even'>";
+					echo "<tr class='even'>" . PHP_EOL;
 					$even = false;	
 				}
 				else {
@@ -627,9 +627,9 @@ function print_ordercontent($cid) {
 		}
 
 		$total = $total + $shipping;
-		echo "<tr><td colspan='2'><b>Shipping</b></td><td>10.00&euro;</td><td colspan='2'></td></tr>";
-		echo "<tr><td colspan='2' class='total'>Total</td><td class='total'>" . number_format($total, 2, '.', '') . "&euro;</td><td colspan='2' class='total'></td></tr>";
-		echo "</table>";
+		echo "<tr><td colspan='2'><b>Shipping</b></td><td>10.00&euro;</td><td colspan='2'></td></tr>" . PHP_EOL;
+		echo "<tr><td colspan='2' class='total'>Total</td><td class='total'>" . number_format($total, 2, '.', '') . "&euro;</td><td colspan='2' class='total'></td></tr>" . PHP_EOL;
+		echo "</table>" . PHP_EOL;
 	}
 	mysqli_free_result($resultset);
 	mysqli_close($conn);

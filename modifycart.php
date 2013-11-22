@@ -140,6 +140,7 @@
 
 			$total = $total + $shipping;
 
+			//Collect information to array
 			for ($i = 0; $i < count($items); $i++) {
 				$query = "select pid, name, description from products where pid='" . $items[$i]['pid'] . "';";
 				$resultset = mysqli_query($conn, $query);
@@ -165,6 +166,7 @@
 		   	mysqli_free_result($resultset);
 			mysqli_close($conn);
 
+			//Send array and parse response
 			curl_setopt($comp321pay, CURLOPT_POSTFIELDS, http_build_query($setxc));
 			parse_str(curl_exec($comp321pay), $response);
 

@@ -156,7 +156,7 @@ ul
 
 /* Links in nav-list */
 
-#logout li a, #navigation li a:link
+#logout li a
 {
 	background-color: #1f1f1f;
 	color: white;

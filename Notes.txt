@@ -44,3 +44,5 @@ OTHER NOTES
 
 - Modular information page to show 
 simple notifications
+
+- All images and product information from looptacle.com and loopflyusa.com

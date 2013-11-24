@@ -29,13 +29,13 @@
 	<div id="container">
 		<h1>User Information</h1>
 		<p>
-			View and update your personal information: </br>
+			View and update your personal information: <br/>
 			(For security reasons it is required to change password every time you update your information) 
 			<!-- Information form -->
 			<form name='information' id='generalform' action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>
 				<fieldset>
 					<label>First name: <br/><input type="text" name="firstname" maxlength="50" value="<?php echo htmlentities($firstname);?>"/></label><br/>
-					<label>Last name: <br/><input type="text" name="lastname" maxlength="50" value="<?php echo htmlentities($lastname);?>"/></label></br>
+					<label>Last name: <br/><input type="text" name="lastname" maxlength="50" value="<?php echo htmlentities($lastname);?>"/></label><br/>
 					<label>Email: <br/><input type="email" name="email" maxlength="100" value="<?php echo htmlentities($email);?>"/></label><br/>
 					<label>Phone: <br/><input type="text" name="phone" value="<?php echo htmlentities($phone);?>"/></label><br/>
 					<label>Address: <br/><textarea name="address" rows="5" cols="30" maxlength="400"><?php echo htmlentities($address);?></textarea></label>

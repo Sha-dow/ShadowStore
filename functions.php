@@ -39,6 +39,7 @@ function print_navigation($privileges, $active) {
 	echo "<div id='navigation'>" . PHP_EOL;
 	echo "<ul>";
 
+	//Check active page and show menus according to user privileges
 	if ($active == 'index') {
 		echo "<li><a href='#' id='current'>Index</a></li>" . PHP_EOL;
 		echo "<li><a href='catalog.php'>Catalog</a></li>" . PHP_EOL;
@@ -46,6 +47,11 @@ function print_navigation($privileges, $active) {
 		if ($privileges == 'U' or $privileges == 'A') {	
 			echo "<li><a href='information.php'>User Information</a></li>" . PHP_EOL;
 			echo "<li><a href='history.php'>Order History</a></li>" . PHP_EOL;
+		}
+
+		if ($privileges == 'A') {
+			echo "<li><a href='users.php'>Users</a></li>" . PHP_EOL;
+			echo "<li><a href='reports.php'>Reports</a></li>" . PHP_EOL;
 		}
 
 		echo "<li><a href='contact.php'>Contact</a></li>" . PHP_EOL;
@@ -60,6 +66,11 @@ function print_navigation($privileges, $active) {
 			echo "<li><a href='history.php'>Order History</a></li>" . PHP_EOL;
 		}
 
+		if ($privileges == 'A') {
+			echo "<li><a href='users.php'>Users</a></li>" . PHP_EOL;
+			echo "<li><a href='reports.php'>Reports</a></li>" . PHP_EOL;
+		}
+
 		echo "<li><a href='contact.php'>Contact</a></li>" . PHP_EOL;
 	}
 
@@ -68,6 +79,12 @@ function print_navigation($privileges, $active) {
 		echo "<li><a href='catalog.php'>Catalog</a></li>" . PHP_EOL;
 		echo "<li><a href='#' id='current'>User Information</a></li>" . PHP_EOL;
 		echo "<li><a href='history.php'>Order History</a></li>" . PHP_EOL;
+
+		if ($privileges == 'A') {
+			echo "<li><a href='users.php'>Users</a></li>" . PHP_EOL;
+			echo "<li><a href='reports.php'>Reports</a></li>" . PHP_EOL;
+		}
+
 		echo "<li><a href='contact.php'>Contact</a></li>" . PHP_EOL;
 	}	
 
@@ -76,7 +93,14 @@ function print_navigation($privileges, $active) {
 		echo "<li><a href='catalog.php'>Catalog</a></li>" . PHP_EOL;
 		echo "<li><a href='information.php'>User Information</a></li>" . PHP_EOL;
 		echo "<li><a href='#' id='current'>Order History</a></li>" . PHP_EOL;
+
+		if ($privileges == 'A') {
+			echo "<li><a href='users.php'>Users</a></li>" . PHP_EOL;
+			echo "<li><a href='reports.php'>Reports</a></li>" . PHP_EOL;
+		}
+
 		echo "<li><a href='contact.php'>Contact</a></li>" . PHP_EOL;
+
 	}
 
 	else if ($active == 'contact') {
@@ -88,9 +112,31 @@ function print_navigation($privileges, $active) {
 			echo "<li><a href='history.php'>Order History</a></li>" . PHP_EOL;
 		}
 
+		if ($privileges == 'A') {
+			echo "<li><a href='users.php'>Users</a></li>" . PHP_EOL;
+			echo "<li><a href='reports.php'>Reports</a></li>" . PHP_EOL;
+		}
+
 		echo "<li><a href='#' id='current'>Contact</a></li>" . PHP_EOL;
 	}				
-
+	else if ($active =='users' and $privileges == 'A') {
+		echo "<li><a href='index.php'>Index</a></li>" . PHP_EOL;
+		echo "<li><a href='catalog.php'>Catalog</a></li>" . PHP_EOL;
+		echo "<li><a href='information.php'>User Information</a></li>" . PHP_EOL;
+		echo "<li><a href='history.php'>Order History</a></li>" . PHP_EOL;
+		echo "<li><a href='#' id='current'>Users</a></li>" . PHP_EOL;
+		echo "<li><a href='reports.php'>Reports</a></li>" . PHP_EOL;
+		echo "<li><a href='contact.php'>Contact</a></li>" . PHP_EOL;
+	}
+	else if ($active =='reports' and $privileges == 'A') {
+		echo "<li><a href='index.php'>Index</a></li>" . PHP_EOL;
+		echo "<li><a href='catalog.php'>Catalog</a></li>" . PHP_EOL;
+		echo "<li><a href='information.php'>User Information</a></li>" . PHP_EOL;
+		echo "<li><a href='history.php'>Order History</a></li>" . PHP_EOL;
+		echo "<li><a href='users.php'>Users</a></li>" . PHP_EOL;
+		echo "<li><a href='#' id='current'>Reports</a></li>" . PHP_EOL;
+		echo "<li><a href='contact.php'>Contact</a></li>" . PHP_EOL;
+	}
 	else {
 		echo "<li><a href='index.php'>Index</a></li>" . PHP_EOL;
 		echo "<li><a href='catalog.php'>Catalog</a></li>" . PHP_EOL;
@@ -98,6 +144,11 @@ function print_navigation($privileges, $active) {
 		if ($privileges == 'U' or $privileges == 'A') {
 			echo "<li><a href='information.php'>User Information</a></li>" . PHP_EOL;
 			echo "<li><a href='history.php'>Order History</a></li>" . PHP_EOL;
+		}
+
+		if ($privileges == 'A') {
+			echo "<li><a href='users.php'>Users</a></li>" . PHP_EOL;
+			echo "<li><a href='reports.php'>Reports</a></li>" . PHP_EOL;
 		}
 
 		echo "<li><a href='contact.php'>Contact</a></li>" . PHP_EOL;

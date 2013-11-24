@@ -87,18 +87,15 @@
 			//Redirect to saved-page
 			header('Location: message.php?header=Shopping cart saved successfully.&message=
 				Your shopping cart is now saved and will be retrieved when you log in next time.
-				</br>All changes you will made during this session will be taken into account and your cart will
-				</br>return to state where it was before logout.');
+				<br/>All changes you will made during this session will be taken into account and your cart will
+				<br/>return to state where it was before logout.');
 			die();
 		}
 		//If 'Checkout'
 		else if ($_POST['submit'] == 'Checkout') {
 
-			//Authentication info for store 
-			$store = "http://localhost/dev"; 
-			$user = "ShadowFishing";
-			$pwd = $user;
-			$signature = $user;
+			//Load authentication info for store 
+			include 'config.php';
 			
 			//Set payment-processor and Curl parameters
 			$pay = "https://www4.comp.polyu.edu.hk/~cstmatsumoto/COMP321PAY/"; 
@@ -175,7 +172,7 @@
 		        die();
 		    }
 		    else {
-		    	header('Location: message.php?header=Payment failed.&message=Payment has failed for some reason.</br>Please try again later');
+		    	header('Location: message.php?header=Payment failed.&message=Payment has failed for some reason.<br/>Please try again later');
 		        die();	
 		    }
 		}

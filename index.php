@@ -19,14 +19,20 @@
 <!-- Main container includes two minor containers -->
 <div id="main-container">
 	<div id="container">
-		<h1>Welcome</h1>
+		<h1>Welcome to ShadowFishing</h1>
 		<p>
-			Contents here...
-		</p>
-	</div>
+			ShadowFishing is your most trusted Loop reseller.<br/>
+			We are selling wide variety of flyfishing gears including<br/>
+			reels, rods and lines.<br/><br/>
+			From our store you will find best prices, newest models and <br/>
+			most experianced staff.<br/><br/>
+			Check our catalog and start your ultimate flyfishing journey. <br/><br/>		
 	
 <?php
-
+	//Load and show random advertisement photo
+	echo "<img style='border:0' src='img/index_ad" . rand(1, 6) . ".jpg' alt='Flyfishing'/>";
+	echo "</p></div>";
+	
 	if (isset($_SESSION['username'])) {
 		shopping_cart($firstname, $lastname);
 	}

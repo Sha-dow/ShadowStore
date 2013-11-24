@@ -37,11 +37,8 @@
 
 	$address = "";
 
-	//Authentication info for store 
-	$store = "http://localhost/dev";
-	$user = "ShadowFishing";
-	$pwd = $user;
-	$signature = $user;
+	//Load authentication info for store 
+	include 'config.php';
 
 	//Set payment-processor and Curl parameters
 	$pay = "https://www4.comp.polyu.edu.hk/~cstmatsumoto/COMP321PAY/"; 
@@ -89,15 +86,15 @@
 
 			echo "<h2>Delivery information:</h2>" . PHP_EOL;
 			echo "<p>";
-			echo "<b>Name:</b></br>" . $_SESSION['firstname'] . " " . $_SESSION['lastname'] . "</br></br>" . PHP_EOL;
-			echo "<b>Email:</b></br>" . $_SESSION['email'] . "</br></br>" . PHP_EOL;
-			echo "<b>Phone:</b></br>" . $_SESSION['phone'] . "</br></br>" . PHP_EOL;
-			echo "<b>Delivery Address:</b></br>" . $address . "</br>" . PHP_EOL;
+			echo "<b>Name:</b></br>" . $_SESSION['firstname'] . " " . $_SESSION['lastname'] . "<br/><br/>" . PHP_EOL;
+			echo "<b>Email:</b></br>" . $_SESSION['email'] . "<br/><br/>" . PHP_EOL;
+			echo "<b>Phone:</b></br>" . $_SESSION['phone'] . "<br/><br/>" . PHP_EOL;
+			echo "<b>Delivery Address:</b></br>" . $address . "<br/>" . PHP_EOL;
 			echo "</p></br>" . PHP_EOL;
 
 			echo "<form name='payform' id='payform' action='" . $_SERVER['PHP_SELF'] . "' method='post'>" . PHP_EOL;
-			echo "<input type=hidden name='TOKEN' value='" . $response["TOKEN"] . "'>" . PHP_EOL; 
-			echo "<input type=hidden name='PAYERID' value='" . $response["PAYERID"] . "'>" . PHP_EOL;
+			echo "<input type=hidden name='TOKEN' value='" . $response["TOKEN"] . "'/>" . PHP_EOL; 
+			echo "<input type=hidden name='PAYERID' value='" . $response["PAYERID"] . "'/>" . PHP_EOL;
 			echo "<input type='submit' id='submit' name='submit' value='Pay now'/>" . PHP_EOL;
 			echo "</form>"; 
 		}
@@ -146,11 +143,11 @@
 
 				//Unset card id from sessiondata
     			unset($_SESSION['cid']);
-    			header('Location: message.php?header=Order completed successfully.&message=Your order has been completed.</br>Thank you for choosing ShadowFishing.');
+    			header('Location: message.php?header=Order completed successfully.&message=Your order has been completed.<br/>Thank you for choosing ShadowFishing.');
     			die();
     		}
     		else {
-    			header('Location: message.php?header=Payment failed.&message=Payment has failed for some reason.</br>Please try again later');
+    			header('Location: message.php?header=Payment failed.&message=Payment has failed for some reason.<br/>Please try again later');
     			die();
     		}
 		}

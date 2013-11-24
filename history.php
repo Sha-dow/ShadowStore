@@ -45,9 +45,10 @@
 
 		//Print order information
 		for ($i = 0; $i < count($orders); $i++) {
-			echo "<p><b>Order ID:</b> " . $orders[$i]['cid'] . "</br>" . PHP_EOL;
-			echo "<b>Ordered:</b> " . $orders[$i]['orderdate'] . "</br>" . PHP_EOL;
-			echo "<b>Delivery address:</b> " . $orders[$i]['deladdress'] . "</br></p>" . PHP_EOL;
+			echo "<p><b>Order ID:</b> " . $orders[$i]['cid'] . "<br/>" . PHP_EOL;
+			echo "<b>Ordered:</b> " . $orders[$i]['orderdate'] . "<br/>" . PHP_EOL;
+			echo "<b>Status:</b> " . $orders[$i]['status'] . "<br/>" . PHP_EOL;
+			echo "<b>Delivery address:</b> " . $orders[$i]['deladdress'] . "<br/></p>" . PHP_EOL;
 			print_ordercontent($orders[$i]['cid']);
 		}
 	}

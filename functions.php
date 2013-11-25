@@ -23,7 +23,7 @@ function print_head($page) {
 	echo "</head>" . PHP_EOL;
 	echo "<body>" . PHP_EOL;
 	echo "<!-- Header part -->" . PHP_EOL;
-	echo "<div id='header'><img style='border:0' src='img/header.png' alt='Shadowfishing'/></div>" . PHP_EOL;
+	echo "<div id='header'><a href='index.php'><img style='border:0' src='img/header.png' alt='Shadowfishing'/></a></div>" . PHP_EOL;
 }
 
 //--------------------------------------------------------

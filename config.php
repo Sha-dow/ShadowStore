@@ -1,13 +1,13 @@
 <?php
 	//Database authentication data
-	$dbhost = 'mysql.comp.polyu.edu.hk';
-	$dbname = '13015127x';
-	$dbuser = '13015127x';
-	$dbpass = 'jnjwkrom';
+	$dbhost = 'ADDRESS_TO_DB';
+	$dbname = 'DB_NAME';
+	$dbuser = 'DB_USERNAME';
+	$dbpass = 'DB_PASSWORD';
 
 	//Payment processor athentication data
-	$store = "http://localhost/dev";
-	$user = "ShadowFishing";
-	$pwd = $user;
-	$signature = $user;
+	$store = "WEBSTORE_ROOT_ADDRESS";
+	$user = "USERNAME";
+	$pwd = "PASSWORD";
+	$signature = "SIGNATURE";
 ?>
